@@ -3,7 +3,7 @@ version: '3.5'
 services:
   cups:
     container_name: cups
-    image: pocholabs/cups-avahi-airprint:latest
+    image: ghcr.io/pocho-labs/cups-avahi-airprint:latest
     # build: .
     restart: unless-stopped
     network_mode: "host"

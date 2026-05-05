@@ -44,7 +44,7 @@ CUPS registers shared printers directly with Avahi via D-Bus for mDNS/DNS-SD adv
 ```yaml
 services:
   cups:
-    image: pocholabs/cups-avahi-airprint:latest
+    image: ghcr.io/pocho-labs/cups-avahi-airprint:latest
     container_name: cups
     network_mode: host
     volumes:

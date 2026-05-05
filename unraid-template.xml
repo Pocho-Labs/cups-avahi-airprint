@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>cups-avahi-airprint</Name>
+  <Repository>ghcr.io/pocho-labs/cups-avahi-airprint:latest</Repository>
+  <Registry>https://github.com/Pocho-Labs/cups-avahi-airprint/pkgs/container/cups-avahi-airprint</Registry>
+  <Network>host</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/Pocho-Labs/cups-avahi-airprint/issues</Support>
+  <Project>https://github.com/Pocho-Labs/cups-avahi-airprint</Project>
+  <Overview>
+    Fork of chuckcharlie/cups-avahi-airprint with added support for HP LaserJet host-based printers not covered by the standard foomatic drivers.
+
+    CUPS AirPrint server with Avahi mDNS advertisement. Makes any USB or network printer available as an AirPrint printer to iPhones, iPads, and Macs.
+
+    Added in this fork:
+    - HP LaserJet P1005, P1006, P1505 and other ZJS/host-based printers via foo2zjs/foo2hp (not included in foomatic by default)
+
+    Also includes:
+    - Brother laser printers (brlaser)
+    - Epson, Canon and others (gutenprint)
+    - Samsung (splix)
+
+    Must run on host network for AirPrint multicast to work.
+    Access the web UI at http://[NAS-IP]:631 to add and configure printers.
+  </Overview>
+  <Category>Productivity: Network:</Category>
+  <WebUI>http://[IP]:631/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/Pocho-Labs/cups-avahi-airprint/master/unraid-template.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/Pocho-Labs/cups-avahi-airprint/master/icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+
+  <Config
+    Name="Config Path"
+    Target="/config"
+    Default="/mnt/user/appdata/cups-avahi-airprint"
+    Mode="rw"
+    Description="Persistent storage for printer config, PPD files and cupsd.conf."
+    Type="Path"
+    Display="always"
+    Required="true"
+    Mask="false">
+    /mnt/user/appdata/cups-avahi-airprint
+  </Config>
+
+  <Config
+    Name="CUPS Admin User"
+    Target="CUPSADMIN"
+    Default="cupsadmin"
+    Mode=""
+    Description="Username for the CUPS admin interface at http://[NAS-IP]:631."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false">
+    cupsadmin
+  </Config>
+
+  <Config
+    Name="CUPS Admin Password"
+    Target="CUPSPASSWORD"
+    Default="cupsadmin"
+    Mode=""
+    Description="Password for the CUPS admin interface."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="true">
+    cupsadmin
+  </Config>
+
+  <Config
+    Name="Avahi Hostname"
+    Target="AVAHI_HOSTNAME"
+    Default="cups-airprint"
+    Mode=""
+    Description="mDNS hostname Avahi will advertise. Change this if you have multiple instances or conflicts with the NAS mDNS daemon (common on Unraid, Synology, TrueNAS)."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false">
+    cups-airprint
+  </Config>
+
+</Container>

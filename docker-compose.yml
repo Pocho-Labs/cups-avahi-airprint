@@ -3,12 +3,12 @@ version: '3.5'
 services:
   cups:
     container_name: cups
-    image: chuckcharlie/cups-avahi-airprint
-    #build: .
-    restart: always
+    image: pocholabs/cups-avahi-airprint:latest
+    # build: .
+    restart: unless-stopped
     network_mode: "host"
     environment:
-      CUPSADMIN: cups
-      CUPSPASSWORD: cups
+      CUPSADMIN: "cupsadmin"
+      CUPSPASSWORD: "cupsadmin"
     volumes:
       - "./config:/config"
